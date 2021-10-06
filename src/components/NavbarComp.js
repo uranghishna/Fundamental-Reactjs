@@ -12,6 +12,8 @@ const NavbarComp = () => {
                 <Nav.Link href="/" className="text-white">Home</Nav.Link>
                 <Nav.Link href="/counter" className="text-white">Counter</Nav.Link>
                 <Nav.Link href="/modalpage" className="text-white">Modal</Nav.Link>
+                <Nav.Link href="/form" className="text-white">Form</Nav.Link>
+                <Nav.Link href="/animasi" className="text-white">Animasi</Nav.Link>
             </Nav>
             </Navbar.Collapse>
         </Container>

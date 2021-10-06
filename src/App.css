@@ -19,5 +19,15 @@
 }
 
 .button-no:hover {
-  background-color: rgb(243, 64, 40);
+  background-color: rgb(170, 170, 170);
+}
+
+.footer{
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: rgb(51, 13, 0);
+   color: slateblue;
+   text-align: center;
 }

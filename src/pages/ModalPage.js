@@ -9,7 +9,7 @@ const ModalPage = () => {
 
 
     return (
-        <div className="container">
+        <div className="container mt-4">
             <Button variant="primary" onClick={handleShow}>
             Cobain klik ini yuk !!
             </Button>
