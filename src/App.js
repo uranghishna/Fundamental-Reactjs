@@ -6,14 +6,15 @@ import Counter from "./pages/Counter";
 import ModalPage from "./pages/ModalPage";
 import Form from "./pages/Form";
 import Animasi from "./pages/Animasi";
+import Quiz from "./pages/Quiz";
 import NavbarComp from "./components/NavbarComp";
+import Footer from "./components/Footer";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import Footer from "./components/Footer";
 
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
           </Route>
           <Route exact path="/form" component={Form} />
           <Route exact path="/animasi" component={Animasi} />
+          <Route exact path="/quiz" component={Quiz} />
         </Switch>
       </div>
     </Router>

@@ -5,7 +5,7 @@ const NavbarComp = () => {
     return (
         <Navbar bg="dark" expand="lg">
         <Container>
-            <Navbar.Brand href="#home" className="text-white">ReactJs-Dasar</Navbar.Brand>
+            <Navbar.Brand className="text-white">ReactJs</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -13,7 +13,9 @@ const NavbarComp = () => {
                 <Nav.Link href="/counter" className="text-white">Counter</Nav.Link>
                 <Nav.Link href="/modalpage" className="text-white">Modal</Nav.Link>
                 <Nav.Link href="/form" className="text-white">Form</Nav.Link>
-                <Nav.Link href="/animasi" className="text-white">Animasi</Nav.Link>
+                <Nav.Link href="/animasi" className="text-white">Animation</Nav.Link>
+                <Nav.Link href="/quiz" className="text-white">Quiz</Nav.Link>
+
             </Nav>
             </Navbar.Collapse>
         </Container>
