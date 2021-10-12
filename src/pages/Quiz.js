@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import { quiz } from '../components/quiz/FakeData'
+import { quiz as quizData } from '../components/quiz/FakeData'
 
 const Quiz = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [quiz, setQuiz] = useState(quizData);
     const {id, question, options} = quiz[currentIndex];
 
     const nextQuestion = () =>{
@@ -13,6 +14,23 @@ const Quiz = () => {
     const previousQuestion = () =>{
         if(currentIndex === 0) return;
         setCurrentIndex(currentIndex - 1)
+    }
+
+        const selectOption = (indexSelected, indexOptionSelected) =>{
+        setQuiz(
+            quiz.map((item, index) =>
+            index === indexSelected
+             ? {...item, selected: true,
+                options: options.map((item, index) =>
+                index === indexOptionSelected
+                    ? {...item, selected: true}
+                    : {...item, selected: false}
+                ),
+                }
+             : item
+            )
+        )
+        
     }
     
 
@@ -36,7 +54,7 @@ const Quiz = () => {
                         margin: 5,
                         borderRadius: 5,
                         cursor: 'pointer',
-                        backgroundColor: index === currentIndex ? "greenyellow" : "white"
+                        backgroundColor: index === currentIndex ? "greenyellow" : item?.selected ? "green" : 'white'
                         }}
                         onClick={() => setCurrentIndex(index)}
                         >
@@ -46,7 +64,7 @@ const Quiz = () => {
                 </div>
             </div>
             <div className="card">
-                <div className="card-header">{currentIndex +1}. {question}</div>
+                <div className="card-header" style={{fontSize: 25}}>{currentIndex +1}. {question}</div>
                 <div className="card-body">
                     {options.map((item, index) => (
                         <div
@@ -55,6 +73,7 @@ const Quiz = () => {
                             justifyItems: 'center',
                             alignItems: 'center',
                             alignContent: 'center',
+                            fontSize: 18,
                         }}
                         key={index}
                         >
@@ -63,10 +82,11 @@ const Quiz = () => {
                                 height: 20,
                                 width: 20,
                                 borderRadius: 100,
-                                backgroundColor: 'grey',
+                                backgroundColor: item?.selected ? "greenyellow" : "grey",
                                 cursor: 'pointer',
                                 marginRight: 5,
-                            }}>
+                            }}
+                             onClick={() => selectOption(currentIndex, index)}>
                             </div>
                             {item.title}
                         </div>
