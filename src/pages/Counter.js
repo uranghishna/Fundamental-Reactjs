@@ -20,7 +20,7 @@ const Counter = () => {
         backgroundColor : "pink",
             }}>
 
-        <div>ini adalah app : {count}</div>
+        <div style={{margin: 10}}>ini adalah app : {count}</div>
         </div>
         
         <button onClick={() => handleIncreamen("tambah")} className="btn btn-success">Increamen</button>
