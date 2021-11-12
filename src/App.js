@@ -7,6 +7,7 @@ import ModalPage from "./pages/ModalPage";
 import Form from "./pages/Form";
 import Animasi from "./pages/Animasi";
 import Quiz from "./pages/Quiz";
+import QuizSummary from "./pages/QuizSummary";
 import NavbarComp from "./components/NavbarComp";
 import Footer from "./components/Footer";
 import {
@@ -40,6 +41,7 @@ const App = () => {
           <Route exact path="/form" component={Form} />
           <Route exact path="/animasi" component={Animasi} />
           <Route exact path="/quiz" component={Quiz} />
+          <Route exact path="/summary" component={QuizSummary} />
         </Switch>
       </div>
     </Router>

@@ -1,6 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
 import { useTimer } from 'react-timer-hook';
-import { quiz as quizData } from '../components/quiz/FakeData'
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { quiz as quizData } from '../components/quiz/FakeData';
+
 
 const Quiz = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,10 +11,10 @@ const Quiz = () => {
     const [score,setScore]= useState({
         correct: 0,
         false: 0,
-    })
+    });
     const {id, question, options} = quiz[currentIndex];
-
-    const MINUTES = 120 * 60;
+    const history = useHistory();
+    const MINUTES = 1 *5;
     const time = new Date();
     time.setSeconds(time.getSeconds() + MINUTES); // 10 minutes timer
 
@@ -25,7 +28,14 @@ const Quiz = () => {
     // pause,
     // resume,
     // restart,
-    } = useTimer({ expiryTimestamp: time, onExpire: () => alert('time up') });
+    } = useTimer({ expiryTimestamp: time, onExpire: () => history.push({
+                    pathname: "/summary",
+                    state: {
+                        quiz,
+                        score,
+                    }
+                })
+            });
 
     const checkScore = () => {
         const questionAnswered = quiz.filter((item) => item.selected);
@@ -72,7 +82,7 @@ const Quiz = () => {
         <div className="container">
             <h1 className="text-center my-3">Happy Quiz</h1>
             <h3 className="text-center">Timer = {hours}:{minutes}:{seconds}</h3>
-            <h4 className="text-center">Betul = {score.correct} | Salah = {score.false}</h4>
+            {/* <h4 className="text-center">Benar = {score.correct} | Salah = {score.false}</h4> */}
             <div className="card" style={{ backgroundColor: 'grey' }}>
                 <div className="card-body" style={{
                     display: 'flex',
@@ -131,7 +141,15 @@ const Quiz = () => {
             </div>
             <div className="d-flex justify-content-between pt-3">
                 <button className="btn btn-secondary col-sm-2" onClick={() => previousQuestion()} disabled={currentIndex === 0 ? true : false}>Previous</button>
-                <button className="btn btn-primary col-sm-2" onClick={() => nextQuestion()} disabled={quiz.length - 1 === currentIndex ? true : false}>Next</button>
+                {quiz.length - 1 === currentIndex ?
+                (<Link className="btn btn-success col-sm-2" to={{
+                    pathname: "/summary",
+                    state: {
+                        quiz,
+                        score,
+                    },
+                }}>Finish</Link>) : (<button className="btn btn-primary col-sm-2" onClick={() => nextQuestion()}>Next</button>)
+                }
             </div>
         </div>
     )
